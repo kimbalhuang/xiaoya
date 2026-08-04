@@ -92,6 +92,10 @@ npm run build       # 产物输出到 dist/，可由后端 server/index.js 静�
 FLASHHEAD_MODE=gradio
 FLASHHEAD_URL=http://127.0.0.1:6006
 FLASHHEAD_TIMEOUT=10000   # 启动探测超时（ms），超时则降级 2D
+# 音频优先级：true=以数字人视频音轨为准（视频带声时仅播视频音、不重复播报，默认）；
+#             false=以原始 TTS 为准（数字人视频强制静音，始终用原始语音播报，避免与视频音轨双声）。
+# 该变量为后端默认值，用户可在设置页本地覆盖（localStorage，无需重启）。
+FLASHHEAD_AUDIO_SYNC=true
 ```
 
 ### 模式二：FastAPI 参考服务（local）

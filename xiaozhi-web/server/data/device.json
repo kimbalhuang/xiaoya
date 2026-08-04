@@ -1,0 +1,12 @@
+{
+  "device_id": "23:cf:93:19:fd:b7",
+  "client_id": "edd2d063-eebb-4d5e-8239-728cc75437f5",
+  "mac": "23:cf:93:19:fd:b7",
+  "serial_number": "SN-C4495404-23cf9319fdb7",
+  "hmac_key": "06faf83af05398434270f1c65cd64f2419380319d27461eadc5a1b5b20080494",
+  "activated": true,
+  "websocket": {
+    "url": "wss://api.tenclass.net/xiaozhi/v1/",
+    "token": "test-token"
+  }
+}

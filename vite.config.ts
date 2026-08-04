@@ -24,7 +24,31 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: true,
+    // 生产构建关闭 sourcemap：显著减小产物体积、缩短构建耗时，且数字人不依赖源码映射调试
+    sourcemap: false,
+    // 锁定语法目标，启用 esbuild 最小化与 CSS 压缩（更快的首屏解析）
+    target: 'es2020',
+    minify: 'esbuild',
+    cssMinify: true,
+    // 提高单包体积告警阈值，避免长尾分包噪声；并关闭压缩体积上报以加速构建统计
+    chunkSizeWarningLimit: 1500,
+    reportCompressedSize: false,
+    assetsInlineLimit: 4096,
+    rollupOptions: {
+      output: {
+        // 按vendor拆分：react / mui / hls 各自独立 chunk，利用浏览器并行加载与长效缓存，
+        // 首屏只需加载当前路由所需的包，降低 TTI（数字人起播更快）
+        manualChunks: {
+          react: ['react', 'react-dom'],
+          mui: ['@mui/material', '@mui/icons-material', '@emotion/react', '@emotion/styled'],
+          hls: ['hls.js'],
+        },
+      },
+    },
+  },
+  // 预打包高频浏览器依赖，避免开发期重复解析、加快冷启动与 HMR
+  optimizeDeps: {
+    include: ['react', 'react-dom', '@mui/material', '@mui/icons-material', 'hls.js', 'zustand'],
   },
 });
 
