@@ -1,0 +1,43 @@
+{
+  "name": "xiaoya",
+  "version": "1.0.0",
+  "private": true,
+  "description": "浏览器端小智 Web 聊天应用（文本/语音 + FlashHead 实时数字人），接入虾哥云（小智公共服）协议",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "concurrently -k -n FLASHHEAD,SERVER,WEB -c magenta,blue,green \"npm run flashhead\" \"npm run server\" \"vite\"",
+    "server": "node server/index.js",
+    "build": "vite build",
+    "start": "node server/index.js",
+    "preview": "vite preview",
+    "flashhead": "\"C:/Users/kim/.workbuddy/binaries/python/envs/flashhead/Scripts/python.exe\" flashhead-server/main.py",
+    "flashhead:sys": "python flashhead-server/main.py"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/icons-material": "^5.16.7",
+    "@mui/material": "^5.16.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "hls.js": "^1.6.16",
+    "opus-decoder": "^0.7.11",
+    "opus-recorder": "^8.0.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "ws": "^8.18.0",
+    "zustand": "^4.5.5"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^9.0.1",
+    "postcss": "^8.4.45",
+    "tailwindcss": "^3.4.10",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.3"
+  }
+}
